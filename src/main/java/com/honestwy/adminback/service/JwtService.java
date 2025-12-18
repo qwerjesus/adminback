@@ -10,7 +10,7 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 
-    private static final String SECRET = "clave-super-secreta-cambiala";
+    private static final String SECRET = "clave-super-secreta-cambiala-para-production-256-bits";
     private static final long EXPIRATION = 1000 * 60 * 60 * 6; // 6 horas
 
     public String generateToken(String subject) {
@@ -32,4 +32,3 @@ public class JwtService {
                 .getSubject();
     }
 }
-

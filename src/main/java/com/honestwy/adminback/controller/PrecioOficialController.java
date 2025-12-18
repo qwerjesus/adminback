@@ -31,8 +31,7 @@ public class PrecioOficialController {
     // REGISTRAR
     @PostMapping
     public ResponseEntity<Void> registrar(
-            @Valid @RequestBody PrecioOficialRequestDTO dto
-    ) {
+            @Valid @RequestBody PrecioOficialRequestDTO dto) {
         service.registrar(dto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
@@ -47,9 +46,15 @@ public class PrecioOficialController {
     @PutMapping("/{id}")
     public ResponseEntity<Void> actualizar(
             @PathVariable String id,
-            @RequestBody PrecioOficialRequestDTO dto
-    ) {
+            @RequestBody PrecioOficialRequestDTO dto) {
         service.actualizar(id, dto);
+        return ResponseEntity.noContent().build();
+    }
+
+    // ELIMINAR
+    @org.springframework.web.bind.annotation.DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminar(@PathVariable String id) {
+        service.eliminar(id);
         return ResponseEntity.noContent().build();
     }
 }

@@ -21,8 +21,7 @@ public class AuthService {
     public AuthService(
             AdminRepository repo,
             PasswordEncoder encoder,
-            JwtService jwtService
-    ) {
+            JwtService jwtService) {
         this.repo = repo;
         this.encoder = encoder;
         this.jwtService = jwtService;
@@ -40,7 +39,7 @@ public class AuthService {
         admin.setEmail(dto.getEmail());
         admin.setPassword(encoder.encode(dto.getPassword()));
         admin.setActivo(true);
-        admin.setFechaCreacion(LocalDate.now().toString());
+        admin.setFechaCreacion(new java.util.Date());
 
         repo.save(admin);
     }

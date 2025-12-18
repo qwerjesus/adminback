@@ -2,13 +2,14 @@ package com.honestwy.adminback.dto;
 
 public class Admin {
 
-    private String id;
-    private String email;
-    private String password;
-    private Boolean activo;
-    private String fechaCreacion;
+	private String id;
+	private String email;
+	private String password;
+	private Boolean activo;
+	private java.util.Date fechaCreacion;
 
-    public Admin() {}
+	public Admin() {
+	}
 
 	public String getId() {
 		return id;
@@ -42,15 +43,15 @@ public class Admin {
 		this.activo = activo;
 	}
 
-	public String getFechaCreacion() {
+	public java.util.Date getFechaCreacion() {
 		return fechaCreacion;
 	}
 
-	public void setFechaCreacion(String fechaCreacion) {
+	public void setFechaCreacion(java.util.Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	public Admin(String id, String email, String password, Boolean activo, String fechaCreacion) {
+	public Admin(String id, String email, String password, Boolean activo, java.util.Date fechaCreacion) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -58,7 +59,5 @@ public class Admin {
 		this.activo = activo;
 		this.fechaCreacion = fechaCreacion;
 	}
-    
-    
-}
 
+}

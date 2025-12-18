@@ -1,4 +1,5 @@
 package com.honestwy.adminback.repositorie;
+
 import com.google.cloud.firestore.*;
 import com.honestwy.adminback.dto.PrecioOficial;
 
@@ -37,5 +38,9 @@ public class PrecioOficialRepository {
         firestore.collection(COLLECTION)
                 .document(id)
                 .update(fields);
+    }
+
+    public void delete(String id) {
+        firestore.collection(COLLECTION).document(id).delete();
     }
 }

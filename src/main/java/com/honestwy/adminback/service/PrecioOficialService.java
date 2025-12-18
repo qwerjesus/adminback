@@ -21,7 +21,6 @@ public class PrecioOficialService {
     public PrecioOficialService(PrecioOficialRepository repo) {
         this.repo = repo;
     }
-    
 
     // REGISTRAR
     public void registrar(PrecioOficialRequestDTO dto) {
@@ -35,8 +34,11 @@ public class PrecioOficialService {
         p.setUnidad(dto.getUnidad());
         p.setPrecioMaximo(dto.getPrecioMaximo());
         p.setPrecioReferencia(dto.getPrecioReferencia());
+        p.setPrecioReferencia(dto.getPrecioReferencia());
         p.setActivo(dto.getActivo() != null ? dto.getActivo() : true);
-        p.setMoneda("COP");
+        p.setFoto(dto.getFoto());
+        p.setMoneda(dto.getMoneda() != null ? dto.getMoneda() : "COP");
+        p.setFuente(dto.getFuente());
         p.setFechaCreacion(LocalDate.now().toString());
 
         repo.save(p);
@@ -55,28 +57,54 @@ public class PrecioOficialService {
 
         Map<String, Object> updates = new HashMap<>();
 
-        if (dto.getNombre() != null) updates.put("nombre", dto.getNombre());
-        if (dto.getDescripcion() != null) updates.put("descripcion", dto.getDescripcion());
-        if (dto.getCategoria() != null) updates.put("categoria", dto.getCategoria());
-        if (dto.getSubcategoria() != null) updates.put("subcategoria", dto.getSubcategoria());
-        if (dto.getUnidad() != null) updates.put("unidad", dto.getUnidad());
-        if (dto.getPrecioMaximo() != null) updates.put("precioMaximo", dto.getPrecioMaximo());
-        if (dto.getPrecioReferencia() != null) updates.put("precioReferencia", dto.getPrecioReferencia());
-        if (dto.getActivo() != null) updates.put("activo", dto.getActivo());
+        if (dto.getNombre() != null)
+            updates.put("nombre", dto.getNombre());
+        if (dto.getDescripcion() != null)
+            updates.put("descripcion", dto.getDescripcion());
+        if (dto.getCategoria() != null)
+            updates.put("categoria", dto.getCategoria());
+        if (dto.getSubcategoria() != null)
+            updates.put("subcategoria", dto.getSubcategoria());
+        if (dto.getUnidad() != null)
+            updates.put("unidad", dto.getUnidad());
+        if (dto.getPrecioMaximo() != null)
+            updates.put("precioMaximo", dto.getPrecioMaximo());
+        if (dto.getPrecioReferencia() != null)
+            updates.put("precioReferencia", dto.getPrecioReferencia());
+        if (dto.getPrecioReferencia() != null)
+            updates.put("precioReferencia", dto.getPrecioReferencia());
+        if (dto.getActivo() != null)
+            updates.put("activo", dto.getActivo());
+        if (dto.getFoto() != null)
+            updates.put("foto", dto.getFoto());
+        if (dto.getMoneda() != null)
+            updates.put("moneda", dto.getMoneda());
+        if (dto.getFuente() != null)
+            updates.put("fuente", dto.getFuente());
 
         repo.update(id, updates);
+    }
+
+    // ELIMINAR
+    public void eliminar(String id) {
+        repo.delete(id);
     }
 
     private PrecioOficialResponseDTO toResponseDTO(PrecioOficial p) {
         PrecioOficialResponseDTO dto = new PrecioOficialResponseDTO();
         dto.setId(p.getId());
         dto.setNombre(p.getNombre());
+        dto.setDescripcion(p.getDescripcion());
         dto.setCategoria(p.getCategoria());
         dto.setSubcategoria(p.getSubcategoria());
         dto.setUnidad(p.getUnidad());
         dto.setPrecioMaximo(p.getPrecioMaximo());
         dto.setPrecioReferencia(p.getPrecioReferencia());
         dto.setActivo(p.getActivo());
+        dto.setFoto(p.getFoto());
+        dto.setMoneda(p.getMoneda());
+        dto.setFuente(p.getFuente());
+        dto.setFechaCreacion(p.getFechaCreacion());
         return dto;
     }
 }
